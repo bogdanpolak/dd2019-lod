@@ -2,15 +2,16 @@ program ExtractCodeToDataModule;
 
 uses
   Vcl.Forms,
-  Module.Main in 'Module.Main.pas' {MainModule: TDataModule},
-  Form.Main in 'Form.Main.pas' {Form1};
+  DataModule.Main in 'DataModule.Main.pas' {MainDataModule: TDataModule},
+  Form.Main in 'Form.Main.pas' {Form1},
+  Model.Employee in 'Model.Employee.pas';
 
 {$R *.res}
 
 begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
-  Application.CreateForm(TMainModule, MainModule);
+  Application.CreateForm(TMainDataModule, MainDataModule);
   Application.CreateForm(TForm1, Form1);
   Application.Run;
 end.
