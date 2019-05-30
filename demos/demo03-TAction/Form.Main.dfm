@@ -32,9 +32,5 @@ object Form1: TForm1
     Height = 412
     Align = alClient
     TabOrder = 1
-    ExplicitLeft = 224
-    ExplicitTop = 192
-    ExplicitWidth = 289
-    ExplicitHeight = 193
   end
 end

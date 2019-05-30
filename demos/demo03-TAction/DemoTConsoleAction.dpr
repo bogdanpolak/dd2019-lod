@@ -7,7 +7,10 @@ uses
   Plus.Vcl.ActionGuiBuilder in 'Plus.Vcl.ActionGuiBuilder.pas',
   Plus.Vcl.PageControlFactory in 'Plus.Vcl.PageControlFactory.pas',
   Frame.Console in 'Frame.Console.pas' {FrameConsole: TFrame},
-  Action.Console.HelloWorld in 'Action.Console.HelloWorld.pas';
+  Action.Console.HelloWorld in 'Action.Console.HelloWorld.pas',
+  Action.SpringDemo.Lists in 'Action.SpringDemo.Lists.pas',
+  Action.SpringDemo.Logger in 'Action.SpringDemo.Logger.pas',
+  Plus.Vcl.Timer in 'Plus.Vcl.Timer.pas';
 
 {$R *.res}
 

@@ -37,7 +37,7 @@ implementation
 {$R *.dfm}
 
 uses
-  Action.Console.HelloWorld;
+  Action.Console.HelloWorld, Action.SpringDemo.Lists, Action.SpringDemo.Logger;
 
 procedure TForm1.FormCreate(Sender: TObject);
 begin
@@ -46,6 +46,8 @@ begin
   PageControlFactory.PageControl := PageControl1;
   TActionGuiBuilder.Create(Self).BuildButtonsFromActions(GroupBox1, [
     THelloWorldAction.Create(Self)
+    , TSpringListAction.Create(Self)
+    , TSpringLoggerAction.Create(Self)
   ]);
   TMessageManager.DefaultManager.SubscribeToMessage(TMessage<UnicodeString>,
     OnConsoleWriteMessage);
