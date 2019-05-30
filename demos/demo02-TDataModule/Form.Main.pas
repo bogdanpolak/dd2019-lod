@@ -3,7 +3,8 @@ unit Form.Main;
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
+  System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls;
 
 type
@@ -24,32 +25,18 @@ implementation
 
 {$R *.dfm}
 
-uses DataModule.Main;
+uses
+  DataModule.Main,
+  Model.Employee;
 
 procedure TForm1.Button1Click(Sender: TObject);
-var
-  title: string;
-  firstName: string;
-  lastName: string;
 begin
-  with MainDataModule do begin
-    fdqEmployees.Open();
-    try
-      fdqEmployees.FetchAll;
-      while not fdqEmployees.Eof do
-      begin
-        title := fdqEmployees.FieldByName('TitleOfCourtesy').AsString;
-        firstName := fdqEmployees.FieldByName('FirstName').AsString;
-        lastName := fdqEmployees.FieldByName('LastName').AsString;
-        Memo1.Lines.Add( Format('[%d] %s',[
-          fdqEmployees.FieldByName('EmployeeID').AsInteger,
-          title +' '+ firstName + ' ' + lastName]) );
-        fdqEmployees.Next;
-      end;
-    finally
-      fdqEmployees.Close();
-    end;
-  end;
+  Memo1.Clear;
+  MainDataModule.ForEachEmployee(
+    procedure(e: TEmployee)
+    begin
+      Memo1.Lines.Add(Format('[%d] %s', [e.ID,e.FullName] ));
+    end);
 end;
 
 end.
